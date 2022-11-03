@@ -1,9 +1,9 @@
-import pytest
 import os
-import allure
+
+import pytest
 from api.user import user
-from common.read_data import data
 from common.logger import logger
+from common.read_data import data
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
@@ -28,7 +28,7 @@ order_data = get_data("order_data.yml")
 @pytest.fixture(scope="session")
 def login_op_fixture():
     """
-    mac运营中心登录
+    后台登录
     """
     loginName = base_data["mac_login_op"]["loginName"]
     password = base_data["mac_login_op"]["password"]
@@ -44,19 +44,8 @@ def login_op_fixture():
         "validateCode": validateCode,
         "deviceId": deviceId
     }
-    header = {
-        "Content-Type": "application/json"
-    }
+    header = {"Content-Type": "application/json"}
     login_op = user.login(data=payload, headers=header)
-    # assert login_op.json()["code"] == 0
     yield login_op
-    logger.info("===========登录后打印返回值===========")
     logger.info(login_op)
-     logger.info(login_op.cookies)
-    logger.info("===========登录后打印返回值===========")
-
-
-
-
-
-
+    logger.info(login_op.cookies)
