@@ -11,7 +11,7 @@ class RespResult():
         cookies: cookie值(RequestsCookieJar类型),更加方便调用者操作cookie,其本身提供了一些方法。
         status_code http状态码
     """
-    data = ""
+    data = None
     cookies = None
     status_code = 0
 

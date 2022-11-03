@@ -14,6 +14,15 @@ def get_data_file_path():
     return data_file_path
 
 
+def get_api_bus_root_url():
+    """
+    获取API_BUS_ROOT_URL
+    """
+    api_root_url = data.load_ini(
+        get_data_file_path())["host"]["api_bus_root_url"]
+    return api_root_url
+
+
 def get_api_root_url():
     """
     获取API_ROOT_URL

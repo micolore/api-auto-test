@@ -1,0 +1,34 @@
+# 测试用户登陆
+test_api_add_customer:
+  api_config_key: test_api_add_customer
+  headers:
+    {
+      'Content-Type': 'application/json',
+      'Origin': 'http://se-login-web:8001',
+      'Referer': 'http://se-login-web:8001',
+    }
+  req_data:
+    {
+      'nickname': 'moppo1103',
+      'userType': 2,
+      'phone': '18217331512',
+      'email': '471304402@qq.com',
+      'username': 'moppo221103',
+      'pass': 'XWgAjO20tBAcPn6hT9J9jA==',
+      'salerId': 621501,
+      'salesName': '621501',
+      'territory': 1,
+      'address': 'shanghai',
+      'industryType': 2,
+      'companyScope': 1,
+      'tag': 'normal',
+      'status': 1,
+      'creditedAccount': 'SHANGHAI',
+      'description': 'hello',
+      'prefix': 86,
+      'customerSuccessIdList': [],
+    }
+  except_info:
+    except_result: true
+    except_code: 0
+    except_msg: 成功
