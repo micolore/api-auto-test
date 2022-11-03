@@ -1,10 +1,8 @@
-import ast
 import json as complexjson
 from urllib.parse import urlencode
 
 import requests
 from common.logger import logger
-from requests.cookies import RequestsCookieJar
 
 
 class RespResult():
@@ -205,6 +203,6 @@ class RestClient():
         except Exception as e:
             result = complexjson.dumps({"unknow error!": e},
                                        ensure_ascii=False)
-        logger.info("result:" + result)
+            logger.info("result:" + result)
         return RespResult(response.text, response.cookies,
                           response.status_code)
