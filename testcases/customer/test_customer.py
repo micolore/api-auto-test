@@ -8,4 +8,4 @@ class TestCustomer():
     @allure.title("新增用户")
     def test_add_customer(self, login_user_pf):
         result = add_customer(login_user_pf)
-        assert result.status_code == 200
+        assert result.http_status_code == 200

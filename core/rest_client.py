@@ -4,33 +4,7 @@ from urllib.parse import urlencode
 import requests
 from common.logger import logger
 
-
-class RespResult():
-    """
-        data: 响应体.
-        cookies: cookie值(RequestsCookieJar类型),更加方便调用者操作cookie,其本身提供了一些方法。
-        status_code http状态码
-    """
-    data = None
-    cookies = None
-    status_code = 0
-
-    def __init__(self, data, cookies, status_code):
-        self.data = data
-        self.cookies = cookies
-        self.status_code = status_code
-
-    def get_cookie_str(self):
-        cookies_dict = requests.utils.dict_from_cookiejar(self.cookies)
-        cookie_str = handler_cookie_str(cookies_dict)
-        return cookie_str
-
-
-def handler_cookie_str(cookie):
-    pp = ''
-    for (key, value) in cookie.items():
-        pp = pp + (key + '=' + value + ";")
-    return pp
+from core.result_base import RespResult
 
 
 class RestClient():
@@ -93,9 +67,8 @@ class RestClient():
                 data = complexjson.dumps(json)
             return self.handle_resp(self.session.patch(url, data, **kwargs))
 
-    def handle_resp(self, response):
-        return RespResult(response.text, response.cookies,
-                          response.status_code)
+    def handle_resp(self, resp):
+        return RespResult(resp)
 
     def request_log(self,
                     url,
@@ -150,8 +123,7 @@ class RestClient():
         except Exception as e:
             result = complexjson.dumps({"未知错误": e}, ensure_ascii=False)
         logger.info("result:" + result)
-        return RespResult(response.text, response.cookies,
-                          response.status_code)
+        return RespResult(response)
 
     def http_post(self, interface_url, headerdata, interface_param, cookies):
         """
@@ -204,5 +176,4 @@ class RestClient():
             result = complexjson.dumps({"unknow error!": e},
                                        ensure_ascii=False)
             logger.info("result:" + result)
-        return RespResult(response.text, response.cookies,
-                          response.status_code)
+        return RespResult(response)
