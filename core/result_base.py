@@ -3,6 +3,9 @@ from common.logger import logger
 
 
 class ResultBase():
+    """
+      1、每个公司定义接口的返回结构是固定且有一定的规范的,如果没有的话，可以直接返回响应对象。
+    """
 
     def __init__(self, result):
         self.response = result
