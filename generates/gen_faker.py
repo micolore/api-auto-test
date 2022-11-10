@@ -2,9 +2,12 @@ from faker import Faker
 
 
 def gen_address():
+    """
+    生成地址
+    国家it_IT、en_US、ja_JP
+    """
     fake = Faker()
-    print(fake.address() + "\n")
-    print(fake.text() + "\n")
+    return fake.address()
 
 
 def gen_name():
@@ -13,10 +16,4 @@ def gen_name():
     国家it_IT、en_US、ja_JP
     """
     fake = Faker(['it_IT', 'en_US', 'ja_JP'])
-    print(fake.name() + "\n")
-    print(fake.text() + "\n")
-
-
-gen_address()
-
-gen_name()
+    return fake.name()

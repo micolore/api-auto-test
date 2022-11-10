@@ -21,3 +21,12 @@
 
 - 1, 首先，可以把 **`充值-查询`** 的操作封装为一个关键字，在这个关键字中依次调用充值和查询的接口，并可以自定义关键字的返回结果。
 - 2, 接着，在编写测试用例的时候，直接调用关键字来进行测试，这时就可以拿到关键字返回的结果，那么断言的时候，就可以直接对关键字返回结果进行断言。
+
+## 使用的第三方包
+
+> https://github.com/vinta/awesome-python
+
+- 数据模拟-faker https://github.com/joke2k/faker
+- 时间处理-arrow https://github.com/arrow-py/arrow
+- orm https://github.com/encode/orm
+- pytest https://docs.pytest.org/en/latest/
