@@ -30,3 +30,5 @@
 - 时间处理-arrow https://github.com/arrow-py/arrow
 - orm https://github.com/encode/orm
 - pytest https://docs.pytest.org/en/latest/
+- 断言库 sure
+- 行为测试 pytest-bdd
