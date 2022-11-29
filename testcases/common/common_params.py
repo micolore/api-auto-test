@@ -4,6 +4,10 @@ from operation.user import mid_login_user as ops_mid_login_user
 
 
 class CommonParams():
+    """
+    公用参数存储
+    1、登陆获取token
+    """
 
     def __init__(self):
         base_data = get_data("api_login_data.yml")
