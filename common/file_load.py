@@ -1,7 +1,8 @@
-import yaml
 import json
 from configparser import ConfigParser
-from common.logger import logger
+
+import yaml
+from logger import logger
 
 
 class MyConfigParser(ConfigParser):
@@ -16,28 +17,30 @@ class MyConfigParser(ConfigParser):
 class ReadFileData():
 
     def __init__(self):
+        """
+        init
+        """
         pass
 
     def load_yaml(self, file_path):
-        logger.info("加载 {} 文件......".format(file_path))
+        logger.info("yaml 加载 {} 文件......".format(file_path))
         with open(file_path, encoding='utf-8') as f:
             data = yaml.safe_load(f)
         logger.info("读到数据 ==>>  {} ".format(data))
         return data
 
     def load_json(self, file_path):
-        logger.info("加载 {} 文件......".format(file_path))
+        logger.info("json 加载 {} 文件......".format(file_path))
         with open(file_path, encoding='utf-8') as f:
             data = json.load(f)
         logger.info("读到数据 ==>>  {} ".format(data))
         return data
 
     def load_ini(self, file_path):
-        logger.info("加载 {} 文件......".format(file_path))
+        logger.info("ini 加载 {} 文件......".format(file_path))
         config = MyConfigParser()
         config.read(file_path, encoding="UTF-8")
         data = dict(config._sections)
-        # print("读到数据 ==>>  {} ".format(data))
         return data
 
 

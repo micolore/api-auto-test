@@ -1,0 +1,5 @@
+common:
+  token: $token
+  user_id: $user_id
+  username: kubrick
+  tenant_id: 1

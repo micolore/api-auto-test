@@ -32,3 +32,6 @@
 - pytest https://docs.pytest.org/en/latest/
 - 断言库 sure
 - 行为测试 pytest-bdd
+- yaml2class
+- jsonpath
+- xmltodict support by attribute get value

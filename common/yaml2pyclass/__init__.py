@@ -1,1 +1,0 @@
-from yaml2pyclass.code_generator import CodeGenerator

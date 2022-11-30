@@ -3,8 +3,38 @@ import json
 import xmltodict
 
 
+def json_to_dict(data):
+    """
+    json to dict
+    """
+    return json.loads(data)
+
+
+def dict_to_json(data):
+    """
+    dict to json
+    """
+    return json.dumps(data)
+
+
+def json_add_kv(data, key, value):
+    """
+    json string add k,v
+    """
+    d = json.loads(data)
+    d[key] = value
+    return json.dumps(d)
+
+
+def json_by_key(data_str, key):
+    """
+    json get value by key
+    """
+    return json.loads(data_str)[key]
+
+
 # 解析json字符串
-class jsonprase(object):
+class jsonparse(object):
 
     def __init__(self, json_value):
         try:
@@ -34,27 +64,3 @@ class jsonprase(object):
         except AttributeError:
             print("json_to_xml error")
         return xml
-
-
-a = '''{
-    "ver": "6.8",
-    "dcid": "477",
-    "head": {
-        "cid": "",
-        "ctok": "",
-        "cver": "1.0",
-        "lang": "01",
-        "sid": "1",
-        "syscode": "09",
-        "auth": "",
-        "extension": []
-    },
-    "contentType": "json"
-}'''
-with open('test.json', encoding='utf-8') as j:
-    demo_json = json.loads(j.read())
-print(demo_json["data"]["token"])
-print("\n")
-print(a)
-token = jsonprase(json.dumps(demo_json)).find_json_node_by_xpath('/data/token')
-print(token)
