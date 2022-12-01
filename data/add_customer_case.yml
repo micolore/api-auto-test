@@ -1,23 +1,8 @@
 cases:
-  # 用户登陆
-  - name: 'test_login'
-    api_config_key: test_login
-    url: ''
-    headers:
-      {
-        'Content-Type': 'application/json',
-        'Origin': 'http://se-login-web:8001',
-        'Referer': 'http://se-login-web:8001',
-      }
-    req_data: {}
-    extract:
-      token: $.token
-    validate:
-      - eq: [$.msg, login success!]
-      - eq: [$.code, 0]
-    # 添加客户
-  - name: 'test_api_add_customer'
-    url: ''
+  # 新增客户
+  - name: 'api_add_customer'
+    url: 'http://192.168.1.4:8002/api/se/system/user'
+    method: POST
     api_config_key: test_api_add_customer
     headers:
       {
@@ -48,7 +33,7 @@ cases:
         'customerSuccessIdList': [],
       }
     extract:
-      token: $.token
+      user_id: $.user_id
     validate:
       - eq: [$.msg, login success!]
       - eq: [$.code, 0]

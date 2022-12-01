@@ -1,6 +1,7 @@
 import json
 
 import xmltodict
+from jsonpath import jsonpath
 
 
 def json_to_dict(data):
@@ -31,6 +32,23 @@ def json_by_key(data_str, key):
     json get value by key
     """
     return json.loads(data_str)[key]
+
+
+def json_extract_value(obj, partten, flag):
+    """
+    flag true=single or false=list
+    """
+    if flag:
+        r = jsonpath(obj, partten)
+        print("0----")
+        print(partten)
+        if r == False:
+            print("1----")
+            return r
+        else:
+            return r[0]
+    else:
+        return jsonpath(obj, partten)
 
 
 # 解析json字符串

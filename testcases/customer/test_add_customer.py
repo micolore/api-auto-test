@@ -1,20 +1,29 @@
 import allure
+from logger import logger
 
-from common.yaml_utils import get_data
 from pojo.CasePojo import Cacses
 
 
-class TestCustomer():
+class TestAddCustomer():
 
     @allure.description("测试新增用户")
     @allure.title("测试新增用户")
     def test_add_customer(self):
 
-        yaml_data = get_data("add_customer_case.yml")
-        print(yaml_data)
-        Cacses.from_yaml(
-            "/Users/kubrick/Documents/kubrick/ower-code/python/api-auto-test/data/add_customer_case.yml"
-        )
+        cl = Cacses.from_yaml("../../data/add_customer_case.yml")
+        print(cl.cases[0])
+        for case in cl.cases:
+            print("\n-------")
+            case_name = case["name"]
+            case_config_key = case["api_config_key"]
+            case_url = case["url"]
+            case_headers = case["headers"]
+            case_req_data = case["req_data"]
+            case_req_token = case["extract"]["user_id"]
+            logger.info(
+                "case_info case_name:{},case_config_key:{},case_url:{},case_headers:{},case_req_data:{},case_req_token:{},"
+                .format(case_name, case_config_key, case_url, case_headers,
+                        case_req_data, case_req_token))
         """
         测试新增用户
         """

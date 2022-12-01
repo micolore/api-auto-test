@@ -11,4 +11,4 @@ class Cacses(yaml2pyclass.CodeGenerator):
         api_config_key: str
         url: str
 
-    cases: list
+    cases: CaseConfigClass
