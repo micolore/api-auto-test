@@ -1,3 +1,3 @@
-from testcases.common.common_params import my_common_params
+from testcases.common.common_params import common_params
 
-print(my_common_params.token)
+print(common_params.token)

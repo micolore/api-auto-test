@@ -40,10 +40,7 @@ def json_extract_value(obj, partten, flag):
     """
     if flag:
         r = jsonpath(obj, partten)
-        print("0----")
-        print(partten)
         if r == False:
-            print("1----")
             return r
         else:
             return r[0]
