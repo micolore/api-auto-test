@@ -1,0 +1,29 @@
+cases:
+  # 用户中台登陆
+  - name: api_mid_login
+    api_config_key: api_mid_login
+    url: http://192.168.1.4:18003/oauth/token
+    method: POST
+    headers:
+      ContentType: 'application/x-www-form-urlencoded'
+      Origin: 'http://se-login-web:8001'
+      Referer: 'http://se-login-web:8001'
+    req_data:
+      client_id: center
+      client_secret: 123456
+      grant_type: password
+      username: moppokubrick
+      password: ssx
+      captchaVerification:
+    extract:
+      # 此处应该是动态的
+      token:
+        key: $.access_token
+        flag: true
+    validate:
+      msg:
+        key: $.msg
+        val: login success!
+      code:
+        key: $.code
+        val: 0
