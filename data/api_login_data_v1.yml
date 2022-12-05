@@ -1,10 +1,11 @@
+# data（可以指定具体的来源，1、全局变量获取（登陆不需要单独的写到每个配置文件里面 2、case接口的返回值获取、3、程序动态生成）
 data:
-  # 用户id（可以指定具体的来源，1、case接口获取、2、程序动态生成）
   user_id:
-    source:
-  # token值
+    source: golbal.user_id # 意思是从全局的变量获取user_id参数
   token:
-    source:
+    source: api_mid_login.token # 意思是从具体的case-api_mid_login的返回值里面进行获取，然后赋值到全局变量，后续的case可以直接进行使用
+  user_name:
+    source: auto_generated # 意思是程序可以自动生成（使用的场景是一些新增接口，比如新增用户，用户名可以自动进行生成，后续可以细化到可以制定生成具体的规则）
 cases:
   # 用户中台登陆
   - name: api_mid_login
