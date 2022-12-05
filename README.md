@@ -46,8 +46,15 @@
 
 ### 测试结果相关
 
-> 如何保证结构的清晰性、可靠性
+> 如何保证结果的清晰性、可靠性
+
+### yaml 文件的处理
+
+- 场景 1:
+  连续的测试 case，参数的传递问题。第一个 case 的返回值在后续的 case 使用到的情况下，可以提取当前 case（yaml 公共的参数，赋值的规则可以定义成各种来源，或自动生成或接口返回），参考 api_login_data_v1.yml data 部分
 
 ### 压力测试相关
 
 > 如果仅仅是正常的接口测试，可能满足不了一些极端的 case，比如某个接口需要压测，我们的框架是否支持呢。
+> https://github.com/httprunner/httprunner 这个项目“可能”就是我心中的自动测试框架了
+> https://httprunner.com/blog/user-survey-report/ 里面的需求应该是自动化测试全部需求形态了

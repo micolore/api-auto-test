@@ -1,3 +1,10 @@
+data:
+  # 用户id（可以指定具体的来源，1、case接口获取、2、程序动态生成）
+  user_id:
+    source:
+  # token值
+  token:
+    source:
 cases:
   # 用户中台登陆
   - name: api_mid_login
