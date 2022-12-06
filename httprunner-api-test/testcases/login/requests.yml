@@ -1,0 +1,55 @@
+# 全局变量(1、优先级，step variables > session variables > parameter variables > config variables)
+config:
+  name: 'httprunner测试'
+  variables:
+    username: config_username # 前面是名称，后面是值（不用太关注，因为多半需要进行二次赋值）
+    password: config_password
+    token: token
+  headers:
+    User-Agent: ${get_user_agent()} # 根据插件里面的函数进行获取变量
+  verify: False #是否开启校验
+  # todo 导出变量（未测试与上面token的关系）
+  export: ['token', 'username', 'password']
+
+teststeps:
+  - name: 登陆接口
+    # 局部变量
+    variables:
+      username: ${ENV(username)} #从环境变量里面取值，然后赋值到局部变量里面
+      password: ${ENV(password)}
+    request:
+      method: POST
+      url: $login_url/oauth/token
+      params:
+        username: $username # 直接使用上面的变量
+        password: $password
+        client_id: center
+        client_secret: 123456
+        grant_type: password
+        captchaVerification:
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+        Origin: http://se-login-web:8001
+        Referer: http://se-login-web:8001
+    extract:
+      token: 'body.access_token' # 提取返回结果里面的数据（body是指resp的响应体）
+    validate:
+      - eq: ['status_code', 200]
+  - name: 授权列表接口
+    variables:
+      token: $token #这个可以不用了
+    request:
+      method: GET
+      url: $base_url/api/se/system/user/grant/page
+      params:
+        current: 1
+        size: 20 #${get_page_size()} # 自己写的go插件里面定义的函数
+        sortOrders: desc
+        sortFields: user_id
+      headers:
+        Content-Type: application/json
+        Origin: http://se-login-web:8001
+        Referer: http://se-login-web:8001
+        Authorization: Bearer $token # 直接获取上一个case赋值到全局变量的值
+    validate:
+      - eq: ['status_code', 200]

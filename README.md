@@ -58,3 +58,7 @@
 > 如果仅仅是正常的接口测试，可能满足不了一些极端的 case，比如某个接口需要压测，我们的框架是否支持呢。
 > https://github.com/httprunner/httprunner 这个项目“可能”就是我心中的自动测试框架了
 > https://httprunner.com/blog/user-survey-report/ 里面的需求应该是自动化测试全部需求形态了
+
+## 其他
+
+> 体验了 httprunner 之后，发现它基本实现了我想要实现的功能。这个项目后续就不再维护了。
